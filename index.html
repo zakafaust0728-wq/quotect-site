@@ -2,44 +2,446 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>クオテクト合同会社</title>
-<meta name="description" content="クオテクト合同会社は、スマートフォン向けアプリを作っています。">
-<link rel="icon" href="./assets/snippocket-icon.png">
-<link rel="stylesheet" href="./assets/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>クオテクト合同会社 | Quotect LLC</title>
+<meta name="description" content="クオテクト合同会社は、アプリ開発で日々の暮らしを便利にする会社です。2026年11月設立予定。">
+<meta property="og:title" content="クオテクト合同会社 | Quotect LLC">
+<meta property="og:description" content="アプリで、毎日をすこし便利に。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quotect.jp/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f7cff'/%3E%3Cstop offset='1' stop-color='%2322c1a4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='30' cy='30' r='14' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M38 38l10 10' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --text: #18202f;
+    --muted: #5b6577;
+    --line: #e3e7ef;
+    --blue: #4f7cff;
+    --teal: #22c1a4;
+    --amber: #ffb547;
+    --coral: #ff7a6b;
+    --grad: linear-gradient(135deg, #4f7cff 0%, #22c1a4 100%);
+    --shadow: 0 10px 30px rgba(24, 32, 47, .08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f131b;
+      --surface: #171c27;
+      --text: #eef1f6;
+      --muted: #a5adbd;
+      --line: #262d3b;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    line-height: 1.85;
+    letter-spacing: .02em;
+    overflow-x: hidden;
+  }
+  a { color: var(--blue); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  /* header */
+  header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: .05em; }
+  .brand svg { width: 32px; height: 32px; }
+  section, .hero { scroll-margin-top: 72px; }
+
+  /* ハンバーガーメニュー */
+  .menu-btn {
+    width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+    display: grid; place-items: center; cursor: pointer; padding: 0; color: var(--text);
+  }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after {
+    display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; position: relative; transition: transform .25s, background .25s;
+  }
+  .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; }
+  .menu-btn span::before { top: -6px; }
+  .menu-btn span::after { top: 6px; }
+  .menu-open .menu-btn span { background: transparent; }
+  .menu-open .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
+  .menu-open .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .menu {
+    position: absolute; top: 72px; right: max(20px, calc((100vw - 1040px) / 2 + 20px));
+    width: min(280px, calc(100vw - 40px)); background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; box-shadow: var(--shadow); padding: 10px;
+    opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility .2s;
+  }
+  .menu-open .menu { opacity: 1; visibility: visible; transform: none; }
+  .menu a {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px;
+    color: var(--text); text-decoration: none; font-weight: 600;
+  }
+  .menu a:hover, .menu a:focus-visible { background: var(--bg); outline: none; }
+  .menu a i { width: 8px; height: 8px; border-radius: 50%; background: var(--grad); flex: none; }
+  .menu a.cta { margin-top: 6px; background: var(--grad); color: #fff; justify-content: center; }
+  .menu a.cta:hover { opacity: .9; }
+
+  /* hero */
+  .hero { position: relative; padding: 72px 0 96px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -20% auto auto; width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(79,124,255,.22), transparent 65%); pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; left: -200px; bottom: -260px; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(34,193,164,.18), transparent 65%); pointer-events: none;
+  }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  @media (max-width: 820px) { .hero .wrap { grid-template-columns: 1fr; } }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600; color: var(--blue);
+    background: var(--surface); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; box-shadow: var(--shadow);
+  }
+  .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); display: inline-block; }
+  .hero h1 { font-size: clamp(1.85rem, 7.6vw, 3.1rem); line-height: 1.3; margin: 24px 0 20px; letter-spacing: .04em; }
+  .hero h1 .grad { white-space: nowrap; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { color: var(--muted); font-size: 1.06rem; margin: 0 0 32px; }
+  .btn {
+    display: inline-block; background: var(--grad); color: #fff; text-decoration: none; font-weight: 700;
+    padding: 14px 28px; border-radius: 999px; box-shadow: 0 8px 20px rgba(79,124,255,.3);
+  }
+  .btn.ghost { background: var(--surface); color: var(--text); box-shadow: none; border: 1px solid var(--line); margin-left: 8px; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 420px; height: auto; filter: drop-shadow(0 24px 40px rgba(24,32,47,.15)); }
+
+  /* sections */
+  section { padding: 88px 0; }
+  .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .18em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0 0 8px; }
+  h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 24px; line-height: 1.4; }
+
+  .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+  @media (max-width: 820px) { .about { grid-template-columns: 1fr; } .about .art { order: 2; } }
+  .about .art svg { width: 100%; max-width: 380px; height: auto; display: block; margin: 0 auto; }
+  .about p { color: var(--muted); margin: 0 0 16px; }
+  .points { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+  .points li { display: flex; gap: 12px; align-items: flex-start; }
+  .points li svg { flex: none; width: 24px; height: 24px; margin-top: 3px; }
+
+  .alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .card .icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 18px; }
+  .card .icon svg { width: 28px; height: 28px; }
+  .card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+  .coming {
+    position: relative; overflow: hidden; border-radius: 28px; padding: 48px 40px; color: #fff; background: var(--grad);
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+  }
+  @media (max-width: 720px) { .coming { grid-template-columns: 1fr; padding: 36px 24px; } .coming svg { justify-self: center; } }
+  .coming h2 { color: #fff; margin-bottom: 12px; }
+  .coming .eyebrow { background: none; color: rgba(255,255,255,.85); -webkit-background-clip: initial; background-clip: initial; }
+  .coming p { margin: 0; opacity: .92; }
+  .coming svg { width: 200px; height: auto; }
+  .coming .app-icon { width: 160px; height: 160px; border-radius: 36px; box-shadow: 0 16px 32px rgba(0,0,0,.18); background: #fff; }
+  @media (max-width: 720px) { .coming .app-icon { justify-self: center; width: 120px; height: 120px; border-radius: 28px; } }
+  .coming-links { margin-top: 20px !important; }
+  .btn.light { background: #fff; color: #18202f; box-shadow: none; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  footer .links a { color: var(--muted); text-decoration: none; }
+  footer .links a:hover { color: var(--text); text-decoration: underline; }
+
+  dl.profile { display: grid; grid-template-columns: 9em 1fr; margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 8px 28px; }
+  dl.profile dt, dl.profile dd { padding: 18px 0; border-bottom: 1px solid var(--line); margin: 0; }
+  dl.profile dt:last-of-type, dl.profile dd:last-of-type { border-bottom: none; }
+  dl.profile dt { color: var(--muted); font-size: .92rem; }
+  @media (max-width: 520px) {
+    dl.profile { grid-template-columns: 1fr; padding: 8px 20px; }
+    dl.profile dt { border-bottom: none; padding-bottom: 0; }
+    dl.profile dd { padding-top: 2px; }
+  }
+
+  .contact { text-align: center; }
+  .contact .box { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 56px 24px; box-shadow: var(--shadow); }
+  .contact svg { width: 72px; height: 72px; margin-bottom: 8px; }
+  .contact p { color: var(--muted); margin: 0 0 28px; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: .85rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-<a class="brand" href="./">クオテクト合同会社</a>
-<nav><a href="./snippocket/">SnipPocket</a><a href="./snippocket/support/">サポート</a></nav>
-</div></header>
-<main><div class="wrap">
 
-<h1>クオテクト合同会社</h1>
-<p class="lead">身のまわりの「ちょっと面倒」を減らす、小さなアプリを作っています。</p>
+<!-- 画像はすべてこのファイル内で自作したSVG(外部素材・フォントは不使用) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-main" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#22c1a4"/>
+    </linearGradient>
+  </defs>
+</svg>
 
-<h2>アプリ</h2>
-<div class="card app">
-<img src="assets/snippocket-icon.png" alt="SnipPocket のアイコン">
-<div>
-<h3 style="margin:0 0 4px">SnipPocket（スニップポケット）</h3>
-<p>iPhone 向けのアプリを準備しています。くわしくは公開にあわせてお知らせします。</p>
-<p style="margin:0"><a class="btn ghost" href="snippocket/">SnipPocket のページ</a></p>
-</div>
-</div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="url(#g-main)"/>
+        <circle cx="30" cy="30" r="14" fill="none" stroke="#fff" stroke-width="6"/>
+        <path d="M38 38l10 10" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      Quotect
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <nav class="menu" id="menu" aria-label="メニュー">
+      <a href="#top"><i></i>トップ</a>
+      <a href="#about"><i></i>私たちについて</a>
+      <a href="#business"><i></i>事業内容</a>
+      <a href="#products"><i></i>プロダクト</a>
+      <a href="./snippocket/"><i></i>SnipPocket</a>
+      <a href="./snippocket/support/"><i></i>サポート</a>
+      <a href="#company"><i></i>会社概要</a>
+      <a href="#contact" class="cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
 
-<h2>会社概要</h2>
-<dl class="info">
-<dt>会社名</dt><dd>クオテクト合同会社</dd>
-<dt>事業内容</dt><dd>スマートフォン向けアプリの企画・開発・販売</dd>
-<dt>お問い合わせ</dt><dd><a href="mailto:info@quotect.jp">info@quotect.jp</a></dd>
-</dl>
+<main>
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="badge"><i></i>2026年11月 設立予定</span>
+        <h1>アプリで、<br><span class="grad">毎日をすこし便利に。</span></h1>
+        <p class="lead">クオテクト合同会社は、アプリ開発を通じて<br>日々の暮らしをもっと便利にする会社です。</p>
+        <a class="btn" href="#contact">お問い合わせ</a><a class="btn ghost" href="#business">事業内容を見る</a>
+      </div>
 
-</div></main>
-<footer class="site"><div class="wrap">
-<a href="./snippocket/privacy/">プライバシーポリシー</a><a href="./snippocket/tokushoho/">特定商取引法に基づく表記</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">利用規約（Apple 標準）</a>
-<p>お問い合わせ：<a href="mailto:info@quotect.jp">info@quotect.jp</a></p>
-<p>© 2026 クオテクト合同会社</p>
-</div></footer>
+      <!-- ヒーロー画像:スマホと暮らしのアプリ画面(自作SVG) -->
+      <div class="hero-art">
+        <svg viewBox="0 0 420 440" role="img" aria-label="暮らしを便利にするスマートフォンアプリのイラスト">
+          <circle cx="210" cy="220" r="190" fill="url(#g-main)" opacity=".12"/>
+          <!-- floating: calendar -->
+          <g transform="translate(18 70) rotate(-8)">
+            <rect width="120" height="96" rx="18" fill="#fff"/>
+            <rect width="120" height="28" rx="14" fill="#ff7a6b"/>
+            <rect y="14" width="120" height="14" fill="#ff7a6b"/>
+            <g fill="#e3e7ef">
+              <rect x="16" y="42" width="18" height="14" rx="4"/><rect x="40" y="42" width="18" height="14" rx="4"/>
+              <rect x="64" y="42" width="18" height="14" rx="4" fill="#ff7a6b"/><rect x="88" y="42" width="18" height="14" rx="4"/>
+              <rect x="16" y="64" width="18" height="14" rx="4"/><rect x="40" y="64" width="18" height="14" rx="4"/>
+              <rect x="64" y="64" width="18" height="14" rx="4"/><rect x="88" y="64" width="18" height="14" rx="4"/>
+            </g>
+          </g>
+          <!-- floating: wallet chart -->
+          <g transform="translate(296 250) rotate(7)">
+            <rect width="112" height="104" rx="18" fill="#fff"/>
+            <rect x="18" y="62" width="14" height="24" rx="4" fill="#4f7cff" opacity=".45"/>
+            <rect x="40" y="46" width="14" height="40" rx="4" fill="#4f7cff" opacity=".7"/>
+            <rect x="62" y="32" width="14" height="54" rx="4" fill="#4f7cff"/>
+            <rect x="84" y="50" width="14" height="36" rx="4" fill="#22c1a4"/>
+            <rect x="18" y="16" width="52" height="8" rx="4" fill="#e3e7ef"/>
+          </g>
+          <!-- phone -->
+          <rect x="120" y="30" width="190" height="380" rx="34" fill="#18202f"/>
+          <rect x="130" y="40" width="170" height="360" rx="26" fill="#f7f8fb"/>
+          <rect x="185" y="48" width="60" height="10" rx="5" fill="#18202f"/>
+          <!-- app header -->
+          <rect x="146" y="76" width="138" height="72" rx="16" fill="url(#g-main)"/>
+          <rect x="160" y="92" width="64" height="9" rx="4.5" fill="#fff" opacity=".85"/>
+          <rect x="160" y="110" width="96" height="16" rx="8" fill="#fff"/>
+          <!-- list items -->
+          <g>
+            <rect x="146" y="162" width="138" height="48" rx="12" fill="#fff"/>
+            <circle cx="168" cy="186" r="11" fill="#22c1a4" opacity=".2"/>
+            <path d="M163 186l4 4 7-8" fill="none" stroke="#22c1a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="188" y="178" width="70" height="7" rx="3.5" fill="#cfd5e1"/>
+            <rect x="188" y="190" width="46" height="6" rx="3" fill="#e3e7ef"/>
+          </g>
+          <g>
+            <rect x="146" y="218" width="138" height="48" rx="12" fill="#fff"/>
+            <circle cx="168" cy="242" r="11" fill="#ffb547" opacity=".25"/>
+            <circle cx="168" cy="242" r="5" fill="#ffb547"/>
+            <rect x="188" y="234" width="78" height="7" rx="3.5" fill="#cfd5e1"/>
+            <rect x="188" y="246" width="40" height="6" rx="3" fill="#e3e7ef"/>
+          </g>
+          <g>
+            <rect x="146" y="274" width="138" height="48" rx="12" fill="#fff"/>
+            <circle cx="168" cy="298" r="11" fill="#4f7cff" opacity=".2"/>
+            <path d="M163 298h10M168 293v10" stroke="#4f7cff" stroke-width="3" stroke-linecap="round"/>
+            <rect x="188" y="290" width="62" height="7" rx="3.5" fill="#cfd5e1"/>
+            <rect x="188" y="302" width="52" height="6" rx="3" fill="#e3e7ef"/>
+          </g>
+          <!-- tab bar -->
+          <rect x="146" y="340" width="138" height="40" rx="14" fill="#fff"/>
+          <circle cx="176" cy="360" r="6" fill="#4f7cff"/>
+          <circle cx="215" cy="360" r="6" fill="#cfd5e1"/>
+          <circle cx="254" cy="360" r="6" fill="#cfd5e1"/>
+          <!-- sparkles -->
+          <path d="M350 92l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#ffb547"/>
+          <path d="M70 330l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#22c1a4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <!-- 暮らしのイラスト(自作SVG) -->
+      <div class="art">
+        <svg viewBox="0 0 380 300" role="img" aria-label="家とアプリでつながる暮らしのイラスト">
+          <ellipse cx="190" cy="270" rx="170" ry="18" fill="url(#g-main)" opacity=".15"/>
+          <circle cx="300" cy="70" r="34" fill="#ffb547" opacity=".9"/>
+          <!-- house -->
+          <path d="M70 150 L170 70 L270 150 Z" fill="#4f7cff"/>
+          <rect x="88" y="146" width="164" height="118" rx="8" fill="#fff" stroke="#e3e7ef" stroke-width="2"/>
+          <rect x="112" y="176" width="44" height="40" rx="6" fill="#4f7cff" opacity=".18"/>
+          <rect x="184" y="196" width="44" height="68" rx="6" fill="#22c1a4"/>
+          <circle cx="218" cy="232" r="3.5" fill="#fff"/>
+          <!-- phone bubble -->
+          <g transform="translate(262 128)">
+            <rect width="78" height="132" rx="16" fill="#18202f"/>
+            <rect x="6" y="8" width="66" height="116" rx="11" fill="#f7f8fb"/>
+            <rect x="14" y="20" width="50" height="22" rx="7" fill="url(#g-main)"/>
+            <rect x="14" y="50" width="50" height="14" rx="5" fill="#fff" stroke="#e3e7ef"/>
+            <rect x="14" y="70" width="50" height="14" rx="5" fill="#fff" stroke="#e3e7ef"/>
+            <rect x="14" y="90" width="50" height="14" rx="5" fill="#fff" stroke="#e3e7ef"/>
+          </g>
+          <!-- connection dots -->
+          <g fill="#4f7cff">
+            <circle cx="40" cy="120" r="4"/><circle cx="26" cy="96" r="3" opacity=".6"/>
+            <circle cx="350" cy="110" r="4" fill="#22c1a4"/>
+          </g>
+          <!-- tree -->
+          <rect x="34" y="214" width="8" height="50" rx="3" fill="#a08060"/>
+          <circle cx="38" cy="204" r="26" fill="#22c1a4"/>
+        </svg>
+      </div>
+      <div>
+        <p class="eyebrow">ABOUT</p>
+        <h2>毎日の「少し面倒」を、<br>アプリで軽くする。</h2>
+        <p>予約や家計の管理、ちょっとした手続きなど、暮らしの中には小さな手間がたくさんあります。クオテクトは、そうした手間をアプリで解決したいと考えています。</p>
+        <ul class="points">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="url(#g-main)"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>使う人の目線で、迷わない操作に</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="url(#g-main)"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>シンプルで、続けやすいデザインに</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="url(#g-main)"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>小さく作って、使いながら良くしていく</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="business" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">BUSINESS</p>
+      <h2>事業内容</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="icon" style="background: rgba(79,124,255,.12)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4f7cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/><path d="M9 7l-2 2.5L9 12M15 7l2 2.5L15 12"/></svg>
+          </div>
+          <h3>アプリ・ソフトウェア開発</h3>
+          <p>スマートフォンアプリやソフトウェアの企画・開発・運用</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background: rgba(34,193,164,.14)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c1a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
+          </div>
+          <h3>暮らしのWebサービス</h3>
+          <p>予約・マッチング・家計管理など、生活に役立つサービスの提供</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background: rgba(255,181,71,.18)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e6951f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M8 10h3M13 10h3"/></svg>
+          </div>
+          <h3>システム開発・ITコンサルティング</h3>
+          <p>システム開発の受託と、ITの活用に関するご相談</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="coming">
+        <div>
+          <p class="eyebrow">PRODUCTS</p>
+          <h2>SnipPocket(スニップポケット)</h2>
+          <p>iPhone 向けのアプリを準備しています。くわしくは公開にあわせてお知らせします。</p>
+          <p class="coming-links"><a class="btn light" href="./snippocket/">SnipPocket のページ</a></p>
+        </div>
+        <img class="app-icon" src="./assets/snippocket-icon.png" alt="SnipPocket のアイコン" width="160" height="160">
+      </div>
+    </div>
+  </section>
+
+  <section id="company" style="padding-top: 0">
+    <div class="wrap">
+      <p class="eyebrow">COMPANY</p>
+      <h2>会社概要</h2>
+      <dl class="profile">
+        <dt>商号</dt><dd>クオテクト合同会社</dd>
+        <dt>英文表記</dt><dd>Quotect LLC</dd>
+        <dt>設立</dt><dd>2026年11月(予定)</dd>
+        <dt>事業内容</dt><dd>アプリ・ソフトウェアの企画・開発、生活関連Webサービスの提供、システム開発の受託、ITコンサルティング</dd>
+        <dt>お問い合わせ</dt><dd><a href="mailto:info@quotect.jp">info@quotect.jp</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" style="padding-top: 0">
+    <div class="wrap">
+      <div class="box">
+        <!-- メールのアイコン(自作SVG) -->
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <rect width="72" height="72" rx="22" fill="url(#g-main)"/>
+          <rect x="16" y="22" width="40" height="28" rx="5" fill="none" stroke="#fff" stroke-width="3.5"/>
+          <path d="M18 25l18 13 18-13" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="eyebrow">CONTACT</p>
+        <h2>お問い合わせ</h2>
+        <p>ご質問・ご相談は、メールでお気軽にご連絡ください。</p>
+        <a class="btn" href="mailto:info@quotect.jp">info@quotect.jp にメールする</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="links" aria-label="関連ページ">
+      <a href="./snippocket/privacy/">プライバシーポリシー</a>
+      <a href="./snippocket/tokushoho/">特定商取引法に基づく表記</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">利用規約(Apple 標準)</a>
+    </nav>
+    <span>© 2026 クオテクト合同会社(Quotect LLC)</span>
+  </div>
+</footer>
+
+<script>
+  // 三本線ボタンでメニューを開閉。項目を押すとその場所へ移動して閉じる
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('menu-btn');
+    var menu = document.getElementById('menu');
+    function setOpen(open) {
+      root.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!root.classList.contains('menu-open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('click', function (e) { if (!menu.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  })();
+</script>
 </body>
 </html>
