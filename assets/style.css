@@ -46,3 +46,4 @@ details>div{padding:0 14px 6px}
 footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:24px 0 40px}
 footer.site a{color:var(--muted);margin-right:14px}
 footer.site p{margin:8px 0 0}
+.badge-soft{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:2px 12px;border-radius:999px;margin-bottom:12px}
