@@ -3,66 +3,287 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ふるさとポケット</title>
-<meta name="description" content="ふるさとポケットは、ふるさと納税を寄付する前に計画できる iPhone アプリです。上限額の目安、まだ使える額、自分と家族の寄付の記録をひとつにまとめます。">
+<title>ふるさとポケット（ふるポケ）| ふるさと納税を、寄付する前に計画する iPhone アプリ</title>
+<meta name="description" content="ふるさとポケット（ふるポケ）は、ふるさと納税の上限まで「あといくら」かをいつでも確かめられる iPhone アプリです。家族の分も、いくつものサイトの寄付もまとめて、寄付の予定・お知らせ・届いたかの確認まで。データは端末の中だけ。">
+<meta property="og:title" content="ふるさとポケット（ふるポケ）">
+<meta property="og:description" content="寄付する前に、あといくらか分かる。家族の分も、いくつものサイトの寄付もまとめて管理する、ふるさと納税の計画アプリ。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quotect.jp/furupoke/">
+<meta property="og:site_name" content="クオテクト合同会社">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://quotect.jp/assets/furupoke-ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ふるさとポケット 寄付する前に、あといくらか分かる。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="format-detection" content="telephone=no,address=no,email=no">
+<link rel="canonical" href="https://quotect.jp/furupoke/">
 <link rel="icon" href="../assets/quotect-mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/furupoke.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ふるさとポケット",
+  "alternateName": "ふるポケ",
+  "operatingSystem": "iOS",
+  "applicationCategory": "FinanceApplication",
+  "description": "ふるさと納税の上限まであといくらかを確かめ、家族の分も含めて寄付の予定と記録をまとめる iPhone アプリ。",
+  "url": "https://quotect.jp/furupoke/",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "publisher": {"@type": "Organization", "name": "クオテクト合同会社", "url": "https://quotect.jp/"}
+}
+</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-<a class="brand" href="../"><img src="../assets/quotect-mark.svg" alt="" width="24" height="24">クオテクト合同会社</a>
-<nav><a href="../furupoke/">ふるさとポケット</a><a href="../furupoke/privacy/">プライバシー</a></nav>
-</div></header>
-<main><div class="wrap">
 
-<span class="badge-soft">iPhone 向けアプリ・開発中（2027年 公開予定）</span>
-<h1>ふるさとポケット</h1>
-<p class="lead">ふるさと納税を、寄付する前に計画。<br>自分の分も、家族の分も。</p>
+<nav class="nav" aria-label="ページ内">
+  <div class="wrap">
+    <a class="brand" href="./"><i aria-hidden="true"></i>ふるポケ</a>
+    <div class="links"><a href="#flow">1年の流れ</a><a href="#features">できること</a><a href="#safe">安心</a><a href="#price">料金</a><a href="#faq">質問</a></div>
+    <span class="pill">2027年 公開予定</span>
+  </div>
+</nav>
 
-<p>いくつかのふるさと納税サイトで寄付していると、「今年あといくら寄付できるのか」「家族の分はどこまで済んだのか」が分かりにくくなります。ふるさとポケットは、上限額の目安と寄付の記録をひとつにまとめ、まだ自由に使える額をいつでも確かめられるアプリです。</p>
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">ふるさと納税の 計画と残り枠の アプリ</p>
+      <h1>寄付する前に、<br><em>あといくら</em>か分かる。</h1>
+      <p class="sub">いくつものサイトで、家族それぞれが寄付しても大丈夫。ふるさとポケット（ふるポケ）は、上限までの残りと、これから寄付する予定をひとつにまとめる iPhone アプリです。</p>
+      <div class="cta">
+        <span class="store"><span><small>2027年 公開予定</small>App Store</span></span>
+        <span class="note">基本の機能はぜんぶ無料・会員登録いらず</span>
+      </div>
+      <ul class="chips">
+        <li>家族の分も</li><li>楽天ふるさと納税・さとふる・ふるなび</li><li>スクショで記録</li><li>データは端末の中だけ</li>
+      </ul>
+    </div>
+    <div class="art">
+      <div class="phone" role="group" aria-label="ふるポケのホーム画面の例">
+        <div class="ph-top"><span>2026年</span><span class="ph-days">年末まで あと40日</span></div>
+        <div>
+          <p class="ph-label" id="phWho">家族の合計　自由に使える額</p>
+          <p class="ph-big">あと<span class="num" id="phAmt">62,000</span><small>円</small></p>
+        </div>
+        <div class="bar" aria-hidden="true"><span class="done" id="bDone" style="width:52%"></span><span class="plan" id="bPlan" style="width:22%"></span><i class="safe" style="left:90%"></i></div>
+        <div class="legend"><span><b style="background:var(--accent)"></b>寄付済み</span><span><b style="background:var(--teal)"></b>予定</span><span>｜ 90%の目安</span></div>
+        <div class="people">
+          <button class="person" type="button" aria-pressed="false" data-p="a"><span class="dot p1">○</span><span>○○</span><span class="amt num">あと 48,000円</span></button>
+          <button class="person" type="button" aria-pressed="false" data-p="b"><span class="dot p2">△</span><span>△△</span><span class="amt num">あと 14,000円</span></button>
+          <button class="person" type="button" aria-pressed="false" data-p="c"><span class="dot p3">□</span><span>□□</span><span class="amt num ov">−6,000円</span></button>
+        </div>
+        <p class="ph-hint">人を押すと、その人の残りに切り替わります</p>
+        <div class="tabbar" aria-hidden="true"><span class="on">ホーム</span><span>探す</span><span>計画</span><span>設定</span></div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h2>できること</h2>
-<div class="features">
-<div class="card"><h3>まだ使える額がひと目で</h3><p>上限額から、寄付した額と予定している額を引いた「まだ使える額」をホームに表示します。上限の手前で知らせる安全ラインつきです。</p></div>
-<div class="card"><h3>上限額の目安を計算</h3><p>年収と家族構成を入れるだけで、寄付できる額の目安を計算します。</p></div>
-<div class="card"><h3>スクリーンショットで記録</h3><p>ふるさと納税サイトの申込履歴の画面を撮るだけで、自治体・寄付額・返礼品を読み取って記録します。読み取りは端末の中だけで行います。</p></div>
-<div class="card"><h3>家族の分もまとめて</h3><p>納税する人ごとに、寄付した額と残りの枠を分けて管理できます。</p></div>
-<div class="card"><h3>寄付の予定とお知らせ</h3><p>寄付する予定と日にちを入れておくと、前もってお知らせします。返礼品の届く時期や、ワンストップ特例の申請書の提出も記録できます。</p></div>
-<div class="card"><h3>返礼品を探す・比べる</h3><p>気になる返礼品を候補として集めて比べ、各サイトの寄付ページを開けます。</p></div>
-</div>
+<section class="band" id="flow">
+  <div class="wrap">
+    <p class="kicker">1年の流れ</p>
+    <h2>はじめの設定から、翌年まで。</h2>
+    <p class="intro">ふるさと納税は、寄付して終わりではありません。届いたかの確認、ワンストップ特例の書類、翌年の予定まで。ふるポケは1年をまるごと手伝います。</p>
+    <div class="year">
+      <ol class="track">
+        <li class="step"><span class="m">1月〜</span><h3>はじめの設定</h3><p>家族と上限額の目安を入れます。年収と家族の形から試算もできます。</p></li>
+        <li class="step"><span class="m">いつでも</span><h3>候補を集める</h3><p>気になる品のページを、スクショや共有でためておきます。</p></li>
+        <li class="step"><span class="m">夏〜秋</span><h3>だれの分で、いつ</h3><p>候補を家族に振り分けて、寄付する月を決めます。上限との兼ね合いを試せます。</p></li>
+        <li class="step hot"><span class="m">秋〜12月</span><h3>寄付して、記録</h3><p>寄付したら「寄付した」を押すだけ。申込履歴のスクショからも入ります。</p></li>
+        <li class="step"><span class="m">〜翌1月10日</span><h3>年末の後かたづけ</h3><p>ワンストップ特例の書類の提出、届いていない品の確認、残った予定の持ち越し。</p></li>
+        <li class="step"><span class="m">翌年</span><h3>去年から予定</h3><p>去年よかった品を、そのまま今年の予定に。</p></li>
+      </ol>
+    </div>
+    <p class="scrollhint">← 横にずらすと続きが見られます →</p>
+  </div>
+</section>
 
-<h2>対応しているふるさと納税サイト</h2>
-<p>楽天ふるさと納税、さとふる、ふるなび（順次追加予定）</p>
-<p style="color:var(--muted);font-size:14px">ふるさとポケットは、各ふるさと納税サイトの運営会社とは関係のない、独立したアプリです。各サービス名は、それぞれの会社の商標または登録商標です。</p>
+<section class="band tight" id="features">
+  <div class="wrap">
+    <p class="kicker">できること</p>
+    <h2>迷う時間を、楽しむ時間に。</h2>
 
-<h2>データは端末の中だけ</h2>
-<p>寄付の記録、スクリーンショット、年収などの情報は、すべてお使いの iPhone の中にだけ保存します。当社のサーバーへ送ることはありません。利用状況の解析や広告もありません。</p>
-<p>インターネットを使うのは、次の3つの場面だけです。</p>
-<ol>
-<li>「探す」で、各ふるさと納税サイトのページを表示するとき</li>
-<li>寄付ページを開くとき（紹介リンクを使う場合があります）</li>
-<li>App Store でアプリ内の購入・購入の復元をするとき</li>
-</ol>
-<p>くわしくは <a href="privacy/">プライバシーポリシー</a> をご覧ください。</p>
+    <div class="feat">
+      <div class="art">
+        <div class="card" role="img" aria-label="計画の画面の例。予定のタラバガニとお米、寄付済みの和牛">
+          <span class="sec-h plan">予定 2件</span>
+          <div class="row"><span class="thumb">🦀</span><span><span class="t">タラバガニ1kg</span><span class="s">北海道 ○○町 ・ 12月上旬〜中旬</span></span><span class="tag">寄付した</span></div>
+          <div class="row"><span class="thumb">🍚</span><span><span class="t">コシヒカリ10kg</span><span class="s">新潟県 ○○市 ・ すぐ発送</span></span><span class="tag">寄付した</span></div>
+          <span class="sec-h done">寄付済み 3件</span>
+          <div class="row"><span class="thumb b">🍖</span><span><span class="t">黒毛和牛 切り落とし800g</span><span class="s">10/12 寄付</span></span><span class="ok">✓</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="verb">計画する</span>
+        <h3>候補を並べて、ああでもない、こうでもない。</h3>
+        <p>気になる品を候補にためて、家族のだれの分にするか試してみる。上限からはみ出すと赤く「○円オーバー」と教えてくれるので、組みかえながら決められます。</p>
+        <ul><li>1kgあたりの額・寄付額・届く時期で並べかえ</li><li>予定は青緑、寄付済みは青で、ひと目で分かる</li><li>「探す」から各サイトの品のページを開いて、そのまま候補に</li></ul>
+      </div>
+    </div>
 
-<h2>紹介リンクについて</h2>
-<p>アプリから各ふるさと納税サイトの寄付ページを開くとき、紹介リンク（アフィリエイトリンク）を使う場合があります。紹介リンクから寄付が行われると、当社が紹介料を受け取ることがあります。寄付する方の負担額は変わりません。紹介リンクはアプリの設定でオフにできます。</p>
+    <div class="feat flip">
+      <div class="art">
+        <div class="card" role="img" aria-label="申込履歴のスクショから、寄付先・品名・寄付額を読み取る例">
+          <div class="shot">
+            <div class="sc"><b>申込履歴のスクショ</b>寄付先 <span class="hl">鹿児島県 ○○町</span><br>返礼品 <span class="hl">うなぎ蒲焼 3尾</span><br>寄付額 <span class="hl">15,000円</span></div>
+            <div>
+              <p class="arrow">端末の中で読み取り →</p>
+              <div class="row" style="border:0"><span class="thumb">🐟</span><span><span class="t">うなぎ蒲焼3尾</span><span class="s">15,000円</span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="verb">記録する</span>
+        <h3>スクショ1枚で、寄付の記録。</h3>
+        <p>各サイトの申込履歴の画面をスクショして渡すだけ。自治体・品名・寄付額を読み取ります。1枚に何件あってもまとめて入ります。読み取りは iPhone の中だけで行います。</p>
+        <ul><li>予定と同じ品なら、自動で「寄付済み」に</li><li>手で入れることもできます</li></ul>
+      </div>
+    </div>
 
-<h2>料金</h2>
-<p>基本の機能は無料でお使いいただけます。スクリーンショットのまとめ取込や、家族の分の管理などは、年ごとの買い切り（自動更新なし）でご利用いただける予定です。</p>
+    <div class="feat">
+      <div class="art">
+        <div class="card" role="img" aria-label="返礼品が届いたかの一覧と、ワンストップ特例の書類の提出状況の例">
+          <div class="row"><span class="thumb">🦀</span><span><span class="t">タラバガニ1kg</span><span class="s">12月上旬〜中旬に届く予定</span></span><span class="ok">届いた ✓</span></div>
+          <div class="row"><span class="thumb">🍇</span><span><span class="t">シャインマスカット2房</span><span class="s">9月 受け取り</span></span><span class="ok">届いた ✓</span></div>
+          <div class="row"><span class="thumb w">🍓</span><span><span class="t">いちご4パック</span><span class="s">1月〜3月に届く予定</span></span><span class="tag w">まだ</span></div>
+          <div class="row"><span class="thumb b">📄</span><span><span class="t">ワンストップの書類</span><span class="s">5自治体のうち 4 提出済み</span></span><span class="tag w">あと1</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="verb">見届ける</span>
+        <h3>今年の品が、ぜんぶ届いたか一覧で。</h3>
+        <p>返礼品は届く時期がばらばら。いつ届く予定か、届いたかを1か所で見られます。ワンストップ特例の書類も、撮るだけで「提出済み」に。</p>
+      </div>
+    </div>
 
-<h2 id="company">運営会社</h2>
-<dl class="info">
-<dt>会社名</dt><dd>クオテクト合同会社（Quotect LLC）<br><span style="color:var(--muted);font-size:14px">2026年11月 設立予定</span></dd>
-<dt>代表者・所在地・電話番号</dt><dd>請求があれば遅滞なく開示します（<a href="mailto:info@quotect.jp">info@quotect.jp</a> までメールでご請求ください）</dd>
-<dt>お問い合わせ</dt><dd><a href="mailto:info@quotect.jp">info@quotect.jp</a></dd>
-</dl>
+    <div class="feat flip">
+      <div class="art">
+        <div class="card" role="img" aria-label="家族3人それぞれの上限と残りの例">
+          <div class="people" style="gap:8px">
+            <div class="person"><span class="dot p1">○</span><span>○○ ・ 上限 120,000円</span><span class="amt num">あと 48,000円</span></div>
+            <div class="person"><span class="dot p2">△</span><span>△△ ・ 上限 45,000円</span><span class="amt num">あと 14,000円</span></div>
+            <div class="person"><span class="dot p3">□</span><span>□□ ・ 上限 30,000円</span><span class="amt num ov">−6,000円</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="verb">家族で</span>
+        <h3>家族の分も、一人の分も。</h3>
+        <p>上限は人ごとに別。夫婦や親の分もまとめて管理でき、人ごとの残りと家族の合計が分かります。一人暮らしの方も、もちろん使えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div></main>
+<section class="band story">
+  <div class="wrap">
+    <p class="kicker">たとえば</p>
+    <h2>タラバガニを、年末に届けたい。</h2>
+    <p class="intro">人気の品は、ぎりぎりに寄付すると年末に間に合わないことがあります。ふるポケなら、余裕をもって予定を組んで、お知らせで思い出せます。</p>
+    <ol class="cal">
+      <li><p class="mo">9<small>月</small></p><p class="what">予定に入れる</p><p>候補の「タラバガニ1kg」を、△△の分として9月30日に寄付する予定に。</p></li>
+      <li><p class="mo">9<small>月27日</small></p><p class="what">お知らせが届く</p><div class="notif"><b>ふるポケ ・ 3日前</b>9/30 にタラバガニ1kg を寄付する予定です</div></li>
+      <li><p class="mo">9<small>月30日</small></p><p class="what">寄付して「寄付した」</p><p>お知らせから、そのまま寄付済みにできます。残りの額もすぐ変わります。</p></li>
+      <li><p class="mo">12<small>月</small></p><p class="what">届いた！</p><p>届く時期の一覧で受け取りをチェック。お正月に間に合いました。</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="safe">
+  <div class="wrap">
+    <p class="kicker">安心の約束</p>
+    <h2>寄付の記録は、あなたの iPhone の中だけ。</h2>
+    <div class="promise">
+      <div class="pr"><p class="big">0<small>件</small></p><h3>集めるデータはありません</h3><p>寄付の記録、スクショ、年収などは iPhone の中だけに保存し、当社のサーバーには送りません。利用状況の解析もしません。</p></div>
+      <div class="pr"><p class="big">0<small>通</small></p><h3>広告やセールの通知は送りません</h3><p>アプリの中に広告はありません。お知らせは、寄付する日や届く時期など、自分で頼んだものだけです。</p></div>
+      <div class="pr"><p class="big b">3<small>つの場面だけ</small></p><h3>インターネットを使うとき</h3><p>「探す」で各サイトのページを見るとき、寄付のページを開くとき、App Store で購入・購入の復元をするとき。</p></div>
+      <div class="pr"><p class="big b">オン / オフ</p><h3>紹介リンクは自分で選べる</h3><p>寄付のページは紹介リンク（アフィリエイトリンク）で開くことがあり、当社が紹介料を受け取ることがあります。寄付する額は変わりません。設定でいつでもオフにでき、オフでも料金は同じです。</p></div>
+    </div>
+    <p class="fine">くわしくは <a href="privacy/">プライバシーポリシー</a> をご覧ください。</p>
+  </div>
+</section>
+
+<section class="band tight" id="price">
+  <div class="wrap">
+    <p class="kicker">料金</p>
+    <h2>基本は、ぜんぶ無料。</h2>
+    <div class="price">
+      <div class="pc"><h3>無料</h3><p class="yen num">0<small>円</small></p><ul><li>あと○円・家族ごとの管理</li><li>スクショで記録・候補と予定</li><li>寄付する日と届く時期のお知らせ</li><li>ワンストップ特例の書類の管理</li></ul></div>
+      <div class="pc plus"><h3>ふるポケ プラス</h3><p class="yen num">980<small>円・買い切り</small></p><ul><li>表に書き出す（CSV）・ウィジェット・Siri</li><li>去年から予定・確定申告の手伝い</li><li>アイコンや色の着せかえ</li></ul></div>
+    </div>
+    <p class="fine">プラスの機能は1つずつ（370円から）でも買えます。月額や年額の自動更新はありません。価格は予定で、公開時に変わることがあります。</p>
+  </div>
+</section>
+
+<section class="band tight" id="faq">
+  <div class="wrap">
+    <p class="kicker">よくある質問</p>
+    <h2>気になるところ</h2>
+    <div class="faq">
+      <details open><summary>アプリの中で寄付できますか？</summary><p>寄付は各サイト（楽天ふるさと納税・さとふる・ふるなび）で行います。ふるポケはそのページを開き、寄付する前の計画と、寄付したあとの記録・管理を手伝います。</p></details>
+      <details><summary>上限額はどうやって決めますか？</summary><p>分かっている額を入れるか、年収と家族の形から目安を計算できます。目安なので、上限の90%に安全ラインを引いて、使いすぎを防ぎます。</p></details>
+      <details><summary>夫婦や親の分もまとめて管理できますか？</summary><p>できます。人ごとに上限と寄付を分けて記録し、家族の合計も見られます。</p></details>
+      <details><summary>スクショは外に送られますか？</summary><p>送られません。読み取りは iPhone の中で行い、自治体・品名・寄付額など必要な項目だけを残します。</p></details>
+      <details><summary>いくつものサイトで寄付していても大丈夫？</summary><p>大丈夫です。サイトがちがっても、同じ人の寄付はひとつの残り枠にまとまります。</p></details>
+      <details><summary>ワンストップ特例の期限が心配です。</summary><p>書類を出した自治体と、まだの自治体が分かります。翌年1月10日の期限の前にお知らせします。</p></details>
+      <details><summary>Android 版はありますか？</summary><p>まず iPhone 版を出し、そのあと Android 版を予定しています。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="finale">
+  <div class="wrap">
+    <h2>今年のふるさと納税を、計画から。</h2>
+    <div class="cta"><span class="store"><span><small>2027年 公開予定</small>App Store</span></span></div>
+    <p class="sites">対応サイト：楽天ふるさと納税・さとふる・ふるなび（順次追加予定）<br>ふるさとポケットは、各ふるさと納税サイトの運営会社とは関係のない、独立したアプリです。各サービス名は、それぞれの会社の商標または登録商標です。</p>
+  </div>
+</section>
+
+<section class="company" id="company">
+  <div class="wrap">
+    <h2>運営会社</h2>
+    <dl class="info">
+      <dt>会社名</dt><dd>クオテクト合同会社（Quotect LLC）<br><span class="note">2026年11月 設立予定</span></dd>
+      <dt>代表者・所在地・電話番号</dt><dd>請求があれば遅滞なく開示します（<a href="mailto:info@quotect.jp">info@quotect.jp</a> までメールでご請求ください）</dd>
+      <dt>お問い合わせ</dt><dd><a href="mailto:info@quotect.jp">info@quotect.jp</a></dd>
+    </dl>
+  </div>
+</section>
+</main>
+
 <footer class="site"><div class="wrap">
-<a href="../furupoke/privacy/">プライバシーポリシー</a><a href="../furupoke/tokushoho/">特定商取引法に基づく表記</a><a href="https://www.apple.com/jp/legal/internet-services/itunes/jp/terms.html">利用規約（Apple 標準）</a>
+<a href="../">クオテクト合同会社</a><a href="privacy/">プライバシーポリシー</a><a href="tokushoho/">特定商取引法に基づく表記</a><a href="https://www.apple.com/jp/legal/internet-services/itunes/jp/terms.html">利用規約（Apple 標準）</a>
 <p>お問い合わせ：<a href="mailto:info@quotect.jp">info@quotect.jp</a></p>
 <p>© 2026 クオテクト合同会社</p>
 </div></footer>
+
+<script>
+// ホーム画面の図: 人を押すと、その人の残りに切り替える（もう一度押すと家族の合計に戻る）
+(function(){
+  var data={
+    all:{who:"家族の合計　自由に使える額",amt:"62,000",done:52,plan:22,ov:false},
+    a:{who:"○○　自由に使える額",amt:"48,000",done:45,plan:15,ov:false},
+    b:{who:"△△　自由に使える額",amt:"14,000",done:55,plan:14,ov:false},
+    c:{who:"□□　自由に使える額",amt:"−6,000",done:70,plan:30,ov:true}
+  };
+  var btns=document.querySelectorAll('.phone .person');
+  function show(k){
+    var d=data[k];
+    document.getElementById('phWho').textContent=d.who;
+    var a=document.getElementById('phAmt');
+    a.textContent=d.amt;
+    a.classList.toggle('ov',d.ov);
+    document.getElementById('bDone').style.width=d.done+'%';
+    document.getElementById('bPlan').style.width=d.plan+'%';
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===k?'true':'false')});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    show(b.getAttribute('aria-pressed')==='true'?'all':b.dataset.p);
+  })});
+})();
+</script>
 </body>
 </html>
